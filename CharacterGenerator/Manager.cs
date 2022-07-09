@@ -101,7 +101,7 @@ namespace CharacterGenerator
 				while (collision)
 				{
 					retryCount++;
-					if (retryCount > 10000)
+					if (retryCount > 1000000)
 					{
 						outerBreak = true;
 						break;
@@ -116,8 +116,8 @@ namespace CharacterGenerator
 					}
 					if (imageMetadatas.Any(x => x == null))
 					{
-						outerBreak = true;
-						break;
+						//outerBreak = true;
+						//break;
 					}
 					combination = _mapper.Map(imageMetadatas);
 					if (!images.Add(combination.Id))
@@ -226,8 +226,16 @@ namespace CharacterGenerator
 				.ToList();
 				if (!folder.required)
 				{
-					partVariants.AddRange(Enumerable.Range(1, Math.Max(1, partVariants.Count * 10 / 9)).Select(x => ImageMetadata.NullObject(folder.folder)));
-					//partVariants.Add(ImageMetadata.NullObject(folder.folder));
+					//partVariants.AddRange(Enumerable.Range(1, Math.Max(1, partVariants.Count * 21 / 20)).Select(x => ImageMetadata.NullObject(folder.folder)));
+					partVariants.Add(ImageMetadata.NullObject(folder.folder));
+					partVariants.Add(ImageMetadata.NullObject(folder.folder));
+					partVariants.Add(ImageMetadata.NullObject(folder.folder));
+					partVariants.Add(ImageMetadata.NullObject(folder.folder));
+					partVariants.Add(ImageMetadata.NullObject(folder.folder));
+					partVariants.Add(ImageMetadata.NullObject(folder.folder));
+					partVariants.Add(ImageMetadata.NullObject(folder.folder));
+					partVariants.Add(ImageMetadata.NullObject(folder.folder));
+					partVariants.Add(ImageMetadata.NullObject(folder.folder));
 				}
 				parts.Add(partVariants);
 			}

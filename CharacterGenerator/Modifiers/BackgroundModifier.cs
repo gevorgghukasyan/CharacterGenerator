@@ -36,11 +36,50 @@ namespace CharacterGenerator
 
 			return true;
 		}
+		private float GetAverage(List<float> capacities)
+		{
+			return capacities.Average(x => x);
+		}
+
+		private bool InPercent(
+		Combination combination,
+		int maxPercent)
+		{
+			//{
+			//	List<float> capacities = new List<float>();
+
+			//	if (combination.Mouth != null)
+			//	{
+			//		capacities.Add(combination.Mouth.PrevalenceInPercentage);
+			//	}
+			//	if (combination.Hat != null) 
+			//	{
+			//		capacities.Add(combination.Hat.PrevalenceInPercentage);
+
+			//	}
+			//	if (combination.Weapon!= null)
+			//	{
+			//		capacities.Add(combination.Weapon.PrevalenceInPercentage);
+			//	}
+			//	if (combination.Amulet != null) 
+			//	{
+			//		capacities.Add(combination.)
+			//	}
+
+			//}
+			if (combination.Rarity < maxPercent)
+			{
+				return true;
+			}
+
+			return false;
+		}
 
 		public IEnumerable<Combination> Execute1(IEnumerable<Combination> all)
 		{
 			var max3perc = all.Where(x =>
-				InPercent(x, all, c => c.Eye, c => c.Armor, 3));
+				InPercent(x, 5));
+			//InPercent(x, all, c => c.Eye, c => c.Armor, 3));
 
 			//var bg = _backgroundPath.ImageFromFile().ResizeImage(new System.Drawing.Size(500, 500));
 			var fn = _backgroundPath.GetFileName();
@@ -64,7 +103,8 @@ namespace CharacterGenerator
 		public IEnumerable<Combination> Execute2(IEnumerable<Combination> all)
 		{
 			var max3perc = all.Where(x =>
-				InPercent(x, all, c => c.Weapon, c => c.Amulet, 3));
+				InPercent(x, 5));
+			//InPercent(x, all, c => c.Weapon, c => c.Amulet, 3));
 
 			//var bg = _backgroundPath.ImageFromFile().ResizeImage(new System.Drawing.Size(500, 500));
 			var fn = _backgroundPath.GetFileName();
@@ -88,7 +128,8 @@ namespace CharacterGenerator
 		public IEnumerable<Combination> Execute3(IEnumerable<Combination> all)
 		{
 			var max3perc = all.Where(x =>
-				InPercent(x, all, c => c.Mouth, c => c.Hat, 3));
+				InPercent(x, 5));
+			//InPercent(x, all, c => c.Mouth, c => c.Hat, 3));
 
 			//var bg = _backgroundPath.ImageFromFile().ResizeImage(new System.Drawing.Size(500, 500));
 			var fn = _backgroundPath.GetFileName();
